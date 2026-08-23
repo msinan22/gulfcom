@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic Meta Configuration -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <!-- Primary SEO Meta Tags -->
+  <title id="pageMetaTitle">Tour Package Details | Gulfcom Tours & Travels Calicut</title>
+  <meta name="description" id="pageMetaDesc" content="View complete day-by-day itinerary, photo gallery, inclusions, and best pricing for holiday packages by Gulfcom Tours & Travels, Calicut." />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body>
+
+  <!-- =========================================================================
+       1. Header & Navigation
+       ========================================================================= -->
+  <header id="siteHeader" class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="Gulfcom Tours & Travels Homepage">
+        <div class="brand-icon-wrap">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d49b38" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">GULFCOM</span>
+          <span class="brand-sub">TOURS & TRAVELS</span>
+        </div>
+      </a>
+
+      <nav id="navMenu" class="nav-menu" aria-label="Primary Navigation">
+        <a href="index.html#home" class="nav-link">Home</a>
+        <a href="index.html#about" class="nav-link">About Us</a>
+        <a href="index.html#packages" class="nav-link active">Packages</a>
+        <a href="index.html#services" class="nav-link">Services</a>
+        <a href="index.html#testimonials" class="nav-link">Reviews</a>
+        <a href="index.html#contact" class="nav-link">Contact Us</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="btn-enquire" onclick="openDetailsBookingModal()" aria-label="Enquire Now">
+          <svg class="icon-gold" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+          </svg>
+          <span>Enquire Now</span>
+        </button>
+
+        <button id="mobileToggle" class="mobile-toggle" aria-label="Open Navigation Menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- =========================================================================
+         2. Package Hero & Header Info
+         ========================================================================= -->
+    <section class="details-page-header">
+      <div class="container">
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumb-trail" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="breadcrumb-separator">/</span>
+          <a href="index.html#packages">Tour Packages</a>
+          <span class="breadcrumb-separator">/</span>
+          <span id="breadcrumbPackageTitle" class="breadcrumb-current">Package Details</span>
+        </nav>
+
+        <div class="details-hero-top">
+          <div class="details-header-info">
+            <h1 id="pkgMainTitle" class="details-title">Loading Package...</h1>
+            <p id="pkgTagline" style="font-size: 1.05rem; color: #64748b; margin-bottom: 0.85rem;"></p>
+            <div class="details-meta-bar">
+              <span id="pkgBadge" class="meta-pill gold">★ Bestseller</span>
+              <span id="pkgDuration" class="meta-pill">⏱ 3 Days / 2 Nights</span>
+              <span id="pkgRating" class="meta-pill">★ 4.9 (140+ Reviews)</span>
+              <span id="pkgPickup" class="meta-pill">🚗 Calicut / Kerala Pickup</span>
+            </div>
+          </div>
+
+          <div class="details-price-badge">
+            <span class="price-label">Starting Price</span>
+            <div class="price-amount" id="pkgPriceDisplay">₹0</div>
+            <span style="font-size: 0.78rem; color: #64748b;">per person on twin sharing</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         3. Photo Gallery Showcase
+         ========================================================================= -->
+    <section class="details-gallery-section">
+      <div class="container">
+        <div class="gallery-grid-main">
+          <!-- Big Featured Image -->
+          <div class="gallery-feature-wrap">
+            <img id="mainGalleryImg" src="" alt="Main Tour Destination Photo" class="gallery-feature-img" />
+          </div>
+
+          <!-- Thumbnails Column -->
+          <div id="galleryThumbsCol" class="gallery-thumbs-col">
+            <!-- Injected via JavaScript -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         4. Main Details & Sticky Booking Sidebar
+         ========================================================================= -->
+    <section class="details-content-section">
+      <div class="container">
+        <div class="details-layout-grid">
+          <!-- Left Column: Details, Highlights, Itinerary, Inclusions -->
+          <div class="details-main-col">
+            <!-- Overview Block -->
+            <div class="details-card-block">
+              <h2 class="block-title">
+                <span class="block-title-icon">ℹ</span>
+                Destination Overview
+              </h2>
+              <p id="pkgFullDesc" class="overview-text"></p>
+            </div>
+
+            <!-- Key Highlights Block -->
+            <div class="details-card-block">
+              <h2 class="block-title">
+                <span class="block-title-icon">✨</span>
+                Tour Highlights
+              </h2>
+              <div id="pkgHighlightsList" class="highlights-list">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+
+            <!-- Day-by-Day Itinerary Block with Photos -->
+            <div class="details-card-block">
+              <h2 class="block-title">
+                <span class="block-title-icon">🗓</span>
+                Day-by-Day Detailed Itinerary
+              </h2>
+              <div id="pkgItineraryTimeline" class="itinerary-list">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+
+            <!-- Inclusions & Exclusions Block -->
+            <div class="details-card-block">
+              <h2 class="block-title">
+                <span class="block-title-icon">📋</span>
+                What's Included & Excluded
+              </h2>
+              <div class="inclusions-grid-box">
+                <!-- Included -->
+                <div class="inc-col-card">
+                  <h3 class="inc-col-title green">✓ Inclusions</h3>
+                  <div id="pkgInclusionsList" class="inc-items-list">
+                    <!-- Injected via JS -->
+                  </div>
+                </div>
+
+                <!-- Excluded -->
+                <div class="inc-col-card">
+                  <h3 class="inc-col-title red">✗ Exclusions</h3>
+                  <div id="pkgExclusionsList" class="inc-items-list">
+                    <!-- Injected via JS -->
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Accommodation & Transport Info -->
+            <div class="details-card-block">
+              <h2 class="block-title">
+                <span class="block-title-icon">🚗</span>
+                Transport & Chauffeur Services
+              </h2>
+              <p style="font-size: 0.92rem; color: #475569; line-height: 1.7; margin-bottom: 1rem;">
+                All our tours originate from <strong>Calicut (Kozhikode)</strong> or your preferred airport/station. Vehicles are commercially licensed, thoroughly sanitized, and operated by professional, polite drivers well-versed with mountain roads, local sightseeing spots, and language support (Malayalam, English, Hindi, Arabic).
+              </p>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.6rem;">
+                <span class="meta-pill">Sedan (Etios / Dzire)</span>
+                <span class="meta-pill">SUV (Innova Crysta)</span>
+                <span class="meta-pill">Tempo Traveller (12 - 26 Seater)</span>
+                <span class="meta-pill">Tourist Coach Bus</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Sticky Booking & Price Estimator -->
+          <div class="details-sidebar-col">
+            <div class="booking-sidebar-card">
+              <div class="booking-card-header">
+                <h3>Book / Customize Tour</h3>
+                <p>Instant booking with Gulfcom Calicut</p>
+              </div>
+
+              <!-- Price Calculator -->
+              <div class="calculator-box">
+                <div class="calc-row">
+                  <span>Starting Fare</span>
+                  <span id="calcBasePrice" style="font-weight: 700;">₹0</span>
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label class="form-label" style="font-size: 0.8rem;">Number of Travelers</label>
+                  <select id="calcGuestsSelect" class="form-control" style="padding: 0.45rem 0.8rem; font-size: 0.85rem;" onchange="updatePriceCalculator()">
+                    <option value="1">1 Person (Solo Traveler)</option>
+                    <option value="2" selected>2 Persons (Couple / Friends)</option>
+                    <option value="3">3 Persons</option>
+                    <option value="4">4 Persons (Family)</option>
+                    <option value="5">5 Persons</option>
+                    <option value="6">6 Persons (Small Group)</option>
+                    <option value="10">10+ Persons (Group Tour)</option>
+                  </select>
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label class="form-label" style="font-size: 0.8rem;">Preferred Travel Date</label>
+                  <input type="date" id="calcTravelDate" class="form-control" style="padding: 0.45rem 0.8rem; font-size: 0.85rem;" />
+                </div>
+                <div class="calc-row total">
+                  <span>Estimated Total</span>
+                  <span id="calcTotalPrice" class="gold">₹0</span>
+                </div>
+              </div>
+
+              <!-- Action CTAs -->
+              <button type="button" class="btn btn-gold" style="width: 100%;" onclick="openDetailsBookingModal()">
+                Request Detailed Quote
+              </button>
+
+              <button type="button" class="btn btn-glass" style="width: 100%; background: #25d366; color: #ffffff; border: none;" onclick="bookCurrentViaWhatsApp()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/>
+                </svg>
+                <span>Book on WhatsApp</span>
+              </button>
+
+              <!-- Helpline Box -->
+              <div class="help-box">
+                <h4>Need Travel Advice?</h4>
+                <p>Talk to our tour managers in Calicut</p>
+                <a href="tel:+914952721066">+91 495 272 1066</a><br />
+                <a href="tel:+919847521066">+91 9847 52 1066</a>
+              </div>
+
+              <!-- Trust Points -->
+              <div style="font-size: 0.78rem; color: #64748b; display: flex; flex-direction: column; gap: 0.4rem; padding-top: 0.5rem; border-top: 1px solid #e2e8f0;">
+                <div>✓ 100% Customized Itineraries</div>
+                <div>✓ Verified Deluxe & Luxury Hotels</div>
+                <div>✓ No Hidden Charges & Transparent Pricing</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         5. Explore Other Destinations
+         ========================================================================= -->
+    <section class="packages-section" style="background-color: #ffffff; padding-top: 4rem;">
+      <div class="container">
+        <span class="script-subhead">Keep Exploring</span>
+        <h2 class="heading-section">Other Popular Holiday Packages</h2>
+        <div class="section-divider">
+          <span class="divider-icon">✈</span>
+        </div>
+
+        <div id="otherPackagesGrid" class="packages-grid" style="margin-bottom: 2rem;">
+          <!-- Injected via JS -->
+        </div>
+
+        <div style="text-align: center;">
+          <a href="index.html#packages" class="btn btn-dark">
+            <span>View All Packages</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       6. Footer Section
+       ========================================================================= -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <div class="brand-icon-wrap" style="width: 38px; height: 38px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#d49b38" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+              </svg>
+            </div>
+            <span class="brand-name" style="font-size: 1.15rem;">GULFCOM</span>
+          </div>
+          <p class="footer-tagline">
+            Your trusted travel partner for unforgettable journeys. Located at Chinthavalappu Junction, Palayam, Calicut.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#home" class="footer-link">Home</a></li>
+            <li><a href="index.html#about" class="footer-link">About Us</a></li>
+            <li><a href="index.html#packages" class="footer-link">Packages</a></li>
+            <li><a href="index.html#services" class="footer-link">Services</a></li>
+            <li><a href="index.html#contact" class="footer-link">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Our Services</h4>
+          <ul class="footer-links">
+            <li><a href="index.html#services" class="footer-link">Flight & Ticket Booking</a></li>
+            <li><a href="index.html#services" class="footer-link">Transportation & Rental</a></li>
+            <li><a href="index.html#services" class="footer-link">Tour Packages</a></li>
+            <li><a href="index.html#services" class="footer-link">Travel Assistance</a></li>
+          </ul>
+        </div>
+
+        <div class="newsletter-box">
+          <h4 class="footer-heading">Contact Office</h4>
+          <p style="font-size: 0.85rem; line-height: 1.5; color: rgba(255,255,255,0.8);">
+            Maniyoth Complex, Chinthavalappu Junction, Ram Mohan Road, Palayam, Kozhikode – 673002<br />
+            <strong>Phone:</strong> +91 495 272 1066 / +91 9847 52 1066
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Gulfcom Tours & Travels. All Rights Reserved.</span>
+        <span>Designed with <span style="color: #ef4444;">❤️</span> for travelers</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Global Modal -->
+  <div id="modalOverlay" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div id="modalContainer" class="modal-container">
+      <div class="modal-header">
+        <h3 id="modalTitle">Inquire About This Tour</h3>
+        <button id="modalCloseBtn" class="modal-close-btn" aria-label="Close dialog">✕</button>
+      </div>
+      <div id="modalBody" class="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Floating WhatsApp -->
+  <a 
+    href="https://wa.me/919847521066?text=Hi%20Gulfcom%20Tours%20%26%20Travels%2C%20I%20would%20like%20to%20inquire%20about%20your%20tour%20packages." 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    class="floating-whatsapp-btn" 
+    aria-label="Chat on WhatsApp"
+  >
+    <div class="whatsapp-pulse"></div>
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2z"/>
+    </svg>
+  </a>
+
+  <!-- Scripts -->
+  <script src="js/packages-data.js"></script>
+  <script>
+    let currentPkg = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Get package ID from URL parameter e.g. ?id=munnar
+      const urlParams = new URLSearchParams(window.location.search);
+      const pkgId = urlParams.get('id') || 'munnar';
+
+      currentPkg = TOURS_DATA.find(p => p.id === pkgId) || TOURS_DATA[0];
+      loadPackageDetails(currentPkg);
+      loadOtherPackages(currentPkg.id);
+      initMobileNav();
+      initModal();
+    });
+
+    function loadPackageDetails(pkg) {
+      document.title = `${pkg.title} Tour Package | Gulfcom Tours & Travels Calicut`;
+      document.getElementById('pageMetaDesc').setAttribute('content', `${pkg.description} Starting from ${pkg.priceDisplay}. Book with Gulfcom Tours & Travels, Calicut.`);
+
+      document.getElementById('breadcrumbPackageTitle').textContent = `${pkg.title} Package`;
+      document.getElementById('pkgMainTitle').textContent = `${pkg.title} Holiday Package`;
+      document.getElementById('pkgTagline').textContent = pkg.tagline;
+      document.getElementById('pkgBadge').textContent = `★ ${pkg.badge}`;
+      document.getElementById('pkgDuration').textContent = `⏱ ${pkg.duration}`;
+      document.getElementById('pkgRating').textContent = `★ ${pkg.rating} (${pkg.reviewsCount} reviews)`;
+      document.getElementById('pkgPriceDisplay').textContent = pkg.priceDisplay;
+      document.getElementById('calcBasePrice').textContent = pkg.priceDisplay;
+      document.getElementById('pkgFullDesc').textContent = pkg.description;
+
+      // Gallery Images
+      const mainImg = document.getElementById('mainGalleryImg');
+      mainImg.src = pkg.imageHigh;
+      mainImg.alt = `${pkg.title} - Gulfcom Tours Calicut`;
+
+      const thumbsCol = document.getElementById('galleryThumbsCol');
+      const galleryList = pkg.gallery && pkg.gallery.length ? pkg.gallery : [pkg.imageHigh, pkg.image];
+      
+      thumbsCol.innerHTML = galleryList.slice(0, 3).map((imgUrl, index) => `
+        <div class="gallery-thumb-item ${index === 0 ? 'active' : ''}" onclick="switchActiveGalleryImg('${imgUrl}', this)">
+          <img src="${imgUrl}" alt="${pkg.title} photo ${index + 1}" class="gallery-thumb-img" loading="lazy" />
+        </div>
+      `).join('');
+
+      // Highlights
+      const highlightsList = document.getElementById('pkgHighlightsList');
+      highlightsList.innerHTML = pkg.highlights.map(h => `
+        <div class="highlight-item">
+          <span class="highlight-check">✓</span>
+          <span>${h}</span>
+        </div>
+      `).join('');
+
+      // Day-by-Day Itinerary with Images
+      const itineraryContainer = document.getElementById('pkgItineraryTimeline');
+      if (pkg.itinerary && pkg.itinerary.length) {
+        itineraryContainer.innerHTML = pkg.itinerary.map(item => `
+          <div class="itinerary-day-card">
+            <div class="itinerary-day-badge">D${item.day}</div>
+            <div class="itinerary-day-header">
+              <h3 class="itinerary-day-title">Day ${item.day}: ${item.title}</h3>
+            </div>
+            <p class="itinerary-day-desc">${item.desc}</p>
+            ${item.image ? `<img src="${item.image}" alt="Day ${item.day} ${item.title}" class="itinerary-day-img" loading="lazy" />` : ''}
+          </div>
+        `).join('');
+      }
+
+      // Inclusions
+      const incList = document.getElementById('pkgInclusionsList');
+      incList.innerHTML = pkg.inclusions.map(inc => `
+        <div class="inc-item">
+          <span style="color: #059669; font-weight: 700;">✓</span>
+          <span>${inc}</span>
+        </div>
+      `).join('');
+
+      // Exclusions
+      const excList = document.getElementById('pkgExclusionsList');
+      excList.innerHTML = pkg.exclusions.map(exc => `
+        <div class="inc-item">
+          <span style="color: #dc2626; font-weight: 700;">✗</span>
+          <span>${exc}</span>
+        </div>
+      `).join('');
+
+      updatePriceCalculator();
+    }
+
+    function switchActiveGalleryImg(imgSrc, thumbEl) {
+      const mainImg = document.getElementById('mainGalleryImg');
+      mainImg.style.opacity = '0.4';
+      setTimeout(() => {
+        mainImg.src = imgSrc;
+        mainImg.style.opacity = '1';
+      }, 150);
+
+      document.querySelectorAll('.gallery-thumb-item').forEach(t => t.classList.remove('active'));
+      if (thumbEl) thumbEl.classList.add('active');
+    }
+
+    function updatePriceCalculator() {
+      if (!currentPkg) return;
+      const guests = parseInt(document.getElementById('calcGuestsSelect').value) || 2;
+      const total = currentPkg.startingPrice * guests;
+      document.getElementById('calcTotalPrice').textContent = `₹${total.toLocaleString('en-IN')}`;
+    }
+
+    function bookCurrentViaWhatsApp() {
+      if (!currentPkg) return;
+      const guests = document.getElementById('calcGuestsSelect').value;
+      const date = document.getElementById('calcTravelDate').value || 'Flexible';
+      const total = document.getElementById('calcTotalPrice').textContent;
+
+      const text = `*Booking Enquiry - Gulfcom Tours & Travels*
+📍 *Package:* ${currentPkg.title} (${currentPkg.duration})
+👥 *Travelers:* ${guests} Persons
+📅 *Preferred Date:* ${date}
+💰 *Estimated Budget:* ${total}
+🏢 *Agency:* Gulfcom Tours, Palayam, Calicut
+Please share the detailed day-by-day plan and confirmed price quotation.`;
+
+      window.open(`https://wa.me/919847521066?text=${encodeURIComponent(text)}`, '_blank');
+    }
+
+    function loadOtherPackages(currentId) {
+      const otherContainer = document.getElementById('otherPackagesGrid');
+      if (!otherContainer) return;
+
+      const others = TOURS_DATA.filter(p => p.id !== currentId).slice(0, 3);
+      otherContainer.innerHTML = others.map(pkg => `
+        <article class="package-card">
+          <div class="card-image-wrap">
+            <img src="${pkg.image}" alt="${pkg.title}" class="card-img" loading="lazy" />
+            <span class="card-badge">${pkg.badge}</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-title">${pkg.title}</h3>
+            <p class="card-desc">${pkg.tagline}</p>
+            <div class="card-footer">
+              <div class="price-box">
+                <span class="price-val">${pkg.priceDisplay}</span>
+                <span class="price-unit">onwards</span>
+              </div>
+              <a href="package-details.html?id=${pkg.id}" class="card-btn">
+                View Details
+              </a>
+            </div>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function initMobileNav() {
+      const toggle = document.getElementById('mobileToggle');
+      const menu = document.getElementById('navMenu');
+      if (toggle && menu) {
+        toggle.addEventListener('click', () => {
+          menu.classList.toggle('open');
+        });
+      }
+    }
+
+    function initModal() {
+      const overlay = document.getElementById('modalOverlay');
+      const closeBtn = document.getElementById('modalCloseBtn');
+      if (closeBtn) {
+        closeBtn.addEventListener('click', () => overlay.classList.remove('active'));
+      }
+      if (overlay) {
+        overlay.addEventListener('click', (e) => {
+          if (e.target === overlay) overlay.classList.remove('active');
+        });
+      }
+    }
+
+    function openDetailsBookingModal() {
+      if (!currentPkg) return;
+      const overlay = document.getElementById('modalOverlay');
+      const body = document.getElementById('modalBody');
+
+      body.innerHTML = `
+        <form class="contact-form" onsubmit="handleDetailsFormSubmit(event)">
+          <div class="form-group">
+            <label class="form-label">Package</label>
+            <input type="text" class="form-control" value="${currentPkg.title} - ${currentPkg.duration} (${currentPkg.priceDisplay} onwards)" readonly style="background:#f8fafc; font-weight:600;" />
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+            <div class="form-group">
+              <label class="form-label">Your Name *</label>
+              <input type="text" id="dfName" class="form-control" placeholder="Full name" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone / WhatsApp *</label>
+              <input type="tel" id="dfPhone" class="form-control" placeholder="+91 98475 21066" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Your Travel Notes / Custom Requests</label>
+            <textarea class="form-control" rows="3" placeholder="Number of travelers, hotel category (3-star / 4-star / luxury resort), cab pickup location in Kerala..."></textarea>
+          </div>
+          <div style="display:flex; gap:0.75rem;">
+            <button type="submit" class="btn btn-gold" style="flex:1;">Submit Inquiry</button>
+            <button type="button" class="btn btn-dark" onclick="bookCurrentViaWhatsApp()">Send via WhatsApp</button>
+          </div>
+        </form>
+      `;
+
+      overlay.classList.add('active');
+    }
+
+    function handleDetailsFormSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('dfName').value;
+      alert(`Thank you, ${name}! Your inquiry for ${currentPkg.title} has been submitted. Our Calicut team will contact you shortly.`);
+      document.getElementById('modalOverlay').classList.remove('active');
+    }
+  </script>
+</body>
+</html>
