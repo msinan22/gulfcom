@@ -24,10 +24,18 @@ function initHeader() {
   const mobileToggle = document.getElementById('mobileToggle');
   const navMenu = document.getElementById('navMenu');
   const navLinks = document.querySelectorAll('.nav-link');
+  let navBackdrop = document.getElementById('navBackdrop');
+
+  if (!navBackdrop) {
+    navBackdrop = document.createElement('div');
+    navBackdrop.id = 'navBackdrop';
+    navBackdrop.className = 'nav-backdrop';
+    document.body.appendChild(navBackdrop);
+  }
 
   // Sticky header on scroll
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 30) {
+    if (window.scrollY > 20) {
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
@@ -35,29 +43,40 @@ function initHeader() {
     updateActiveNavLink();
   }, { passive: true });
 
+  function openMobileNav() {
+    navMenu.classList.add('open');
+    mobileToggle.classList.add('active');
+    mobileToggle.setAttribute('aria-expanded', 'true');
+    navBackdrop.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileNav() {
+    navMenu.classList.remove('open');
+    mobileToggle.classList.remove('active');
+    mobileToggle.setAttribute('aria-expanded', 'false');
+    navBackdrop.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
   // Mobile drawer toggle
   if (mobileToggle && navMenu) {
     mobileToggle.addEventListener('click', () => {
-      navMenu.classList.toggle('open');
-      const isExpanded = navMenu.classList.contains('open');
-      mobileToggle.setAttribute('aria-expanded', isExpanded);
+      const isOpen = navMenu.classList.contains('open');
+      if (isOpen) {
+        closeMobileNav();
+      } else {
+        openMobileNav();
+      }
     });
 
     // Close mobile drawer when clicking a link
     navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        navMenu.classList.remove('open');
-        mobileToggle.setAttribute('aria-expanded', 'false');
-      });
+      link.addEventListener('click', closeMobileNav);
     });
 
-    // Close on click outside
-    document.addEventListener('click', (e) => {
-      if (!navMenu.contains(e.target) && !mobileToggle.contains(e.target) && navMenu.classList.contains('open')) {
-        navMenu.classList.remove('open');
-        mobileToggle.setAttribute('aria-expanded', 'false');
-      }
-    });
+    // Close on backdrop tap
+    navBackdrop.addEventListener('click', closeMobileNav);
   }
 
   // Active link highlighter based on scroll position
@@ -127,7 +146,7 @@ function renderPackagesGrid(packages) {
             <span class="price-val">${pkg.priceDisplay}</span>
             <span class="price-unit">onwards</span>
           </div>
-          <div style="display: flex; gap: 0.4rem;">
+          <div class="card-actions-group">
             <a href="package-details.html?id=${pkg.id}" class="card-btn" style="background: var(--color-primary-navy); color: #ffffff;">
               Details
             </a>

@@ -541,10 +541,45 @@ Please share the detailed day-by-day plan and confirmed price quotation.`;
     function initMobileNav() {
       const toggle = document.getElementById('mobileToggle');
       const menu = document.getElementById('navMenu');
+      let backdrop = document.getElementById('navBackdrop');
+
+      if (!backdrop) {
+        backdrop = document.createElement('div');
+        backdrop.id = 'navBackdrop';
+        backdrop.className = 'nav-backdrop';
+        document.body.appendChild(backdrop);
+      }
+
+      function openNav() {
+        menu.classList.add('open');
+        toggle.classList.add('active');
+        toggle.setAttribute('aria-expanded', 'true');
+        backdrop.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeNav() {
+        menu.classList.remove('open');
+        toggle.classList.remove('active');
+        toggle.setAttribute('aria-expanded', 'false');
+        backdrop.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
       if (toggle && menu) {
         toggle.addEventListener('click', () => {
-          menu.classList.toggle('open');
+          if (menu.classList.contains('open')) {
+            closeNav();
+          } else {
+            openNav();
+          }
         });
+
+        menu.querySelectorAll('.nav-link').forEach(link => {
+          link.addEventListener('click', closeNav);
+        });
+
+        backdrop.addEventListener('click', closeNav);
       }
     }
 
