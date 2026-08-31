@@ -1,9 +1,4 @@
-/* ==========================================================================
-   GULFCOM TOURS & TRAVELS - MODERN RESPONSIVE LUXURY STYLESHEET
-   Location: Maniyoth Complex, Chinthavalappu Junction, Palayam, Kozhikode
-   Optimized for Ultra-High Responsiveness (320px to 4K Ultra-Wide),
-   Zero-Lag Performance, Smooth Interactions & Modern Touch Targets
-   ========================================================================== */
+
 
 /* --------------------------------------------------------------------------
    1. CSS Custom Properties / Design Tokens
@@ -2371,4 +2366,17 @@ ul, ol {
     bottom: 1rem;
     right: 1rem;
   }
+}
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
